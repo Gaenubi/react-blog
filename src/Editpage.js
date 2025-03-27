@@ -1,16 +1,19 @@
 import React from 'react'
 import {useState,  useEffect} from 'react'
 import {useParams} from 'react-router-dom'
+import {useContext} from 'react';
+import DataContext from './Context/DataContext';
 
-const Editpage = ({Posts, PostTitle, PostBody, setPostTitle, setPostBody, handleEdit, DeletePost}) => {
+const Editpage = () => {
 
+    const {Posts, PostTitle, PostBody, setPostTitle, setPostBody, handleEdit, DeletePost} = useContext(DataContext)
     const {id} = useParams()
     const [loading, setLoading] = useState(false)
     const [EditTitle, setEditTitle] = useState('')
     const [EditBody, setEditBody] = useState('')
     
     const fetchPost = async () => {
-        const Post = await Posts.filter((post) => post.id == id)
+        const Post = await Posts.filter((post) => post._id == id)
         await setEditTitle(Post[0].Title)
         await setEditBody(Post[0].Body)
         setLoading(true)

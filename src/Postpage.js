@@ -1,9 +1,12 @@
 import React from 'react'
 import {useState,  useEffect} from 'react'
 import {useParams, Link} from 'react-router-dom'
+import {useContext} from 'react';
+import DataContext from './Context/DataContext';
 
 
-const Postpage = ({Posts, DeletePost}) => {
+const Postpage = () => {
+  const {Posts, DeletePost} = useContext(DataContext)
   const {id} = useParams()
   const [loading, setLoading] = useState(false)
   const [Deleted, setDeleted] = useState(false)
@@ -11,7 +14,7 @@ const Postpage = ({Posts, DeletePost}) => {
   const [PostBody, setPostBody] = useState('')
       
   const fetchPost = async () => {
-      const Post = await Posts.filter((post) => post.id == id)
+      const Post = await Posts.filter((post) => post._id == id)
       await setPostTitle(Post[0].Title)
       await setPostBody(Post[0].Body)
       setLoading(true)

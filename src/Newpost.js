@@ -1,7 +1,10 @@
 import React from 'react'
 import post from './postcard'
+import {useContext} from 'react';
+import DataContext from './Context/DataContext';
 
-const Newpost = ({PostTitle, setPostTitle, PostBody, setPostBody, handleSubmit}) => {
+const Newpost = () => {
+  const {PostTitle, setPostTitle, PostBody, setPostBody, handleSubmit} = useContext(DataContext)
   return (
     <form className="NewPost" onSubmit={handleSubmit}>
       <label htmlFor='Title'>Title:</label>

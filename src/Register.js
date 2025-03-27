@@ -2,7 +2,6 @@ import React from 'react'
 import {useRef, useState, useEffect} from 'react'
 import {faCheck, faTimes, faInfoCircle} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { readItems, createItem, updateItem, deleteItem} from './Models/Users'
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -57,7 +56,6 @@ const Register = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(user, pwd)
-        createItem(user, pwd)
     }
 
   return (
